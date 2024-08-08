@@ -14,7 +14,8 @@ const ReservationSchema = new Schema(
 
         reservationDate:{
             type: Date,
-            required: true
+            required: true,
+            set: v => new Date(v)
         },
 
         numberOfPeople:{
@@ -42,6 +43,12 @@ const ReservationSchema = new Schema(
             type: String,
             required: false
 
+        },
+
+        status: {
+            type: String,
+            enum: ['active', 'canceled'],
+            default: 'active'
         }
     },
 

@@ -29,12 +29,6 @@ const OrderSchema = new Schema(
 
         products: [ProductSchema],
 
-
-        totalAmount: {
-            type: Number,
-            required: false
-        },
-
         status:{
             type: String,
             required: false,
@@ -54,7 +48,10 @@ const OrderSchema = new Schema(
     }
 );
 
-//middleware to calculate the payment for the order
+//TODO middleware to calculate the payment for the order
+//TODO middleware to add delivary charge based on the address
+//TODO middleware to calculate the discount and final amount based on the promo code entered
+//TODO middleware to add payment record to payment table once the order is placed
 
 
 

@@ -17,7 +17,7 @@ const PaymentSchema = new Schema(
 
         paymentMethod: {
             type: String,
-            required: true,
+            required: false,
             enum: ['cash', 'other']
         },
 

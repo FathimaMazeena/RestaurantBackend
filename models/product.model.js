@@ -46,7 +46,6 @@ const ProductSchema=new Schema(
        outOfStockOrderCount: {
         type: Number,
         default: 0,
-        required: true
     }
 
     },

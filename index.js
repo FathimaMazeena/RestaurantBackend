@@ -2,6 +2,9 @@ const express = require ('express');
 const mongoose = require ('mongoose');
 const userRoutes = require ('./routes/user');
 const serviceRoutes=require('./routes/service');
+const categoryRoutes=require('./routes/category');
+const productRoutes=require('./routes/product');
+const reservationRoutes=require('./routes/reservation');
 const bodyParser = require ('body-parser');
 
 //set up express app
@@ -12,6 +15,9 @@ app.use(bodyParser.json());
 //initialize routes
 app.use('/api', userRoutes);
 app.use('/api', serviceRoutes);
+app.use('/api', categoryRoutes);
+app.use('/api', productRoutes);
+app.use('/api', reservationRoutes);
 
 // app.get('/', (req,res)=>{
 // res.send({name:'mazeena'});

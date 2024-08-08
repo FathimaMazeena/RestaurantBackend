@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const MenuItemSchema = new Schema(
+const DishSchema = new Schema(
     {
         image: {
             type: String,
@@ -33,11 +33,17 @@ const MenuItemSchema = new Schema(
             type: String,
             required: false,
             enum: ['small', 'medium', 'large']  
+        },
+
+        isActive: {
+            type: Boolean,
+            required: true,
+            default:true
         }
     },
     { timestamps: true }
 );
 
-const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
+const Dish = mongoose.model('Dish', DishSchema);
 
-module.exports = MenuItem;
+module.exports = Dish;

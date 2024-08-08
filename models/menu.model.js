@@ -20,7 +20,7 @@ const MenuSchema = new Schema(
 
         menuItems: {
             type: [Schema.Types.ObjectId],
-            ref: 'MenuItem',  
+            ref: 'dish',  
             required: true
         },
 
@@ -34,6 +34,12 @@ const MenuSchema = new Schema(
             type: String,
             required: true,
             enum: ['small', 'medium', 'large']  
+        },
+
+        isActive: {
+            type: Boolean,
+            required: true,
+            default:true
         }
     },
     { timestamps: true }
