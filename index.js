@@ -1,5 +1,11 @@
 const express = require ('express');
 const mongoose = require ('mongoose');
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+require('dotenv').config();
+
 const userRoutes = require ('./routes/user');
 const serviceRoutes=require('./routes/service');
 const categoryRoutes=require('./routes/category');
@@ -9,6 +15,37 @@ const bodyParser = require ('body-parser');
 
 //set up express app
 const app = express();
+
+//connect to db
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
+    console.log("Connected to database");
+    app.listen(process.env.PORT, ()=>{
+        console.log("Server is running on port", process.env.PORT);
+        
+    });
+        
+})
+.catch(()=>{
+    console.log("Connection failed!", error);
+});
+
+
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ 
+        mongoUrl: process.env.MONGO_URI,
+        collectionName: 'sessions' }),
+}));
+
+app.get('/', (req, res) => {
+    req.session.isAuth=true;
+    console.log(req.session);
+    res.send('Session storage with MongoDB Atlas!');
+});
 
 app.use(bodyParser.json());
 
@@ -23,15 +60,4 @@ app.use('/api', reservationRoutes);
 // res.send({name:'mazeena'});
 // });
 
-mongoose.connect("mongodb+srv://fathimamazeenamycloudcubicle:SZYJLZSnWKEDGwUy@cluster0.peyi7i6.mongodb.net/divine-dining-restaurant?retryWrites=true&w=majority&appName=Cluster0")
-.then(()=>{
-    console.log("Connected to database");
-    app.listen(3000, ()=>{
-        console.log("Server is running on port 3000");
-        
-    });
-        
-})
-.catch(()=>{
-    console.log("Connection failed!");
-});
+

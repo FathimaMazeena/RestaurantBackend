@@ -1,10 +1,8 @@
 {
-  "name": "restaurantbackend",
+  "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "node index.js",
-    "serve:dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,7 +12,10 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.2",
     "multer": "^1.4.5-lts.1"

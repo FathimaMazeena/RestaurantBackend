@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CartItemSchema = new Schema({
-    productId: {  // Changed from cartItem to productId for clarity
+    productId: { 
         type: Schema.Types.ObjectId,
         ref: 'Product',
         required: true

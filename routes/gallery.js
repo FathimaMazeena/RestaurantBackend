@@ -1,5 +1,5 @@
 
-
+//TODO IMAGE UPLOAD TO BE DONE LATER
 
 //add new image to the gallery
 router.post('/upload', async (req, res) => {

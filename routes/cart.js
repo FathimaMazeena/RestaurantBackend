@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Cart=require('../models/cart.model');
+const {addToCart,
+
+} =require('../controllers/cart.controller')
+
 
 
 
@@ -8,14 +11,9 @@ const Cart=require('../models/cart.model');
 
 
 //add products to the cart by the customer
-router.post('/cart', async (req, res) => {
-    try {
-        const cart = await Cart.create(req.body);
-        res.status(201).json(cart);
-    } catch (error) {
-        res.status(500).json({ message: 'Error adding the item to the cart', error: error.message });
-    }
-});
+router.post('/cart', addToCart);
+
+
 
 
 //TODO update product quantity of cart items by customer

@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 const User=require('../models/user.model');
 
@@ -26,8 +27,8 @@ const User=require('../models/user.model');
     
 });*/
 
-
-router.post('/users', async (req, res) => {
+//register new user
+router.post('/register', async (req, res) => {
     console.log('Received POST request with body:', req.body); // Debug log
     try {
         const user = await User.create(req.body);
@@ -39,6 +40,32 @@ router.post('/users', async (req, res) => {
     }
 });
 
+//user login
+router.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User does not exist!' });
+        }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: 'Password is incorrect' });
+        }
+        req.session.userId = user._id;
+        return res.status(200).json({ message: 'You are authenticated' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
 
 
-module.exports=router;
+router.post('/logout' , (req,res)=>{
+    req.session.destroy((err)=>{
+        if(err) throw err;
+        res.redirect('/');
+    });
+});
+
+module.exports = router;
