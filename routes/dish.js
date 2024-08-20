@@ -5,11 +5,27 @@ const Dish=require('../models/dish.model');
 
 //view all dishs
 router.get('/dishes', (req,res)=>{
-    Dish.find({}).then(function(dishes){
+    Dish.find({ isActive: true }).then(function(dishes){
         res.send(dishes);
     });
 
 });
+
+// Get a limited number of dishes for the home page
+router.get('/dishes/preview', async (req, res) => {
+
+    Dish.find({ isActive: true })
+        .sort({ createdAt: -1 })
+        .limit(4)
+        .then(function(dishes) {
+            res.send(dishes);
+        })
+        .catch(function(error) {
+            res.status(500).json({ message: 'Error fetching dishes', error: error.message });
+        });
+
+});
+
 
 
 //Add a new dish by admin

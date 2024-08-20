@@ -18,6 +18,12 @@ const DishSchema = new Schema(
             required: [true, 'Description field is required']
         },
 
+        categoryId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Category',
+            required: true
+        },
+
         ingredients: {
             type: [String],
             required: false

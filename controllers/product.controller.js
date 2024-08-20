@@ -25,11 +25,27 @@ const addProduct = async (req, res) => {
 
 //get products
 const getProducts=async(req,res)=>{
-    const products=await Product.find({}).sort({createdAt:-1});
+    const products=await Product.find().sort({createdAt:-1});
     res.status(200).json(products);
     
 
 };
+
+//get products for home page
+const getProductPreview=async(req,res)=>{
+
+    Product.find()
+        .sort({ createdAt: -1 })
+        .limit(4)
+        .then(function(products) {
+            res.send(products);
+        })
+        .catch(function(error) {
+            res.status(500).json({ message: 'Error fetching products', error: error.message });
+        });
+
+};
+
 
 
 
@@ -101,5 +117,6 @@ module.exports = {
     getProducts,
     getProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProductPreview
 };

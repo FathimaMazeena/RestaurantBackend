@@ -40,6 +40,11 @@ const MenuSchema = new Schema(
             type: Boolean,
             required: true,
             default:true
+        },
+
+        isTodaysMenu: {
+            type: Boolean,
+            default: false
         }
     },
     { timestamps: true }

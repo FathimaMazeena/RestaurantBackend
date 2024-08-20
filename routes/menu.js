@@ -5,11 +5,25 @@ const Menu=require('../models/menu.model');
 
 //view all menus
 router.get('/menus', (req,res)=>{
-    Menu.find({}).then(function(menus){
+    Menu.find({ isActive: true })
+    .sort({ createdAt: -1 })
+    .then(function(menus){
         res.send(menus);
     });
 
 });
+
+//view todays special menu on home page
+router.get('/menus/todays-menu', async (req, res) => {
+    try {
+        const todaysMenu = await Menu.findOne({ isTodaysMenu: true });
+        res.status(200).json(todaysMenu);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching today\'s menu', error: error.message });
+    }
+});
+
+
 
 
 

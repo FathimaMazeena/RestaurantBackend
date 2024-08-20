@@ -5,7 +5,7 @@ const Offer=require('../models/offer.model');
 
 //view all offers by user
 router.get('/offers', (req,res)=>{
-    Offer.find({}).then(function(offerss){
+    Offer.find({}).then(function(offers){
         res.send(offers);
     });
 

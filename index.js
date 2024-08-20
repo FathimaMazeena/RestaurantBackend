@@ -11,10 +11,18 @@ const serviceRoutes=require('./routes/service');
 const categoryRoutes=require('./routes/category');
 const productRoutes=require('./routes/product');
 const reservationRoutes=require('./routes/reservation');
+const offerRoutes=require('./routes/offer');
+const menuRoutes=require('./routes/menu');
+const locationRoutes=require('./routes/location');
+const dishRoutes=require('./routes/dish');
+
 const bodyParser = require ('body-parser');
+const path = require('path');
 
 //set up express app
 const app = express();
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)
@@ -55,6 +63,10 @@ app.use('/api', serviceRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', productRoutes);
 app.use('/api', reservationRoutes);
+app.use('/api', offerRoutes);
+app.use('/api', menuRoutes);
+app.use('/api', locationRoutes);
+app.use('/api', dishRoutes);
 
 // app.get('/', (req,res)=>{
 // res.send({name:'mazeena'});

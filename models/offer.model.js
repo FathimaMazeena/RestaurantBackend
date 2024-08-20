@@ -8,6 +8,11 @@ const OfferSchema = new Schema(
             required: true
         },
 
+        title:{
+            type:String,
+            required:true
+        },
+
         promoCode: {
             type: String,
             required: true,

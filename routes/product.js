@@ -4,12 +4,16 @@ const{ addProduct,
     getProducts,
     getProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProductPreview
  } = require('../controllers/product.controller')
 
 
 //get all products
 router.get('/products', getProducts);
+
+//get products for home page
+router.get('/products/preview' , getProductPreview);
 
 //Add a new product
 router.post('/products', addProduct);
