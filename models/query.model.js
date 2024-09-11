@@ -5,9 +5,23 @@ const QuerySchema = new Schema(
     {
         userId:{
             type: String,
-            required: true
+            required: false
 
         },
+
+        name:{
+
+            type: String,
+            required: true
+        },
+
+        email:{
+
+            type: String,
+            required: true
+        },
+
+
 
         queryText:{
             type: String,
@@ -16,14 +30,14 @@ const QuerySchema = new Schema(
 
         staffId:{
             type: String,
-            required: true
+            required: false
 
         },
 
 
         responseText:{
             type: String,
-            required: true
+            required: false
 
         }
 

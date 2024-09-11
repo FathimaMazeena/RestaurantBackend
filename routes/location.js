@@ -8,7 +8,6 @@ router.get('/locations', (req,res)=>{
     });
 
 });
-
 //Add new menu by the admin
 router.post('/locations', async (req, res) => {
     try {
@@ -18,8 +17,6 @@ router.post('/locations', async (req, res) => {
         res.status(500).json({ message: 'Error adding location', error: error.message });
     }
 });
-
-
 //update menu by admin (active status and other information)
 router.put('/locations/:id', (req, res)=>{
     Location.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
@@ -29,7 +26,6 @@ router.put('/locations/:id', (req, res)=>{
         
     });
 });
-
 //delete menu by admin
 router.delete('/locations/:id', (req, res)=>{
     Location.findByIdAndDelete({_id:req.params.id}).then(function(location){

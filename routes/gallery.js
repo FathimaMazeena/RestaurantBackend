@@ -4,15 +4,14 @@
 //add new image to the gallery
 router.post('/upload', async (req, res) => {
     try {
-        const offer = await Offer.create(req.body);
+        const gallery = await Gallery.create(req.body);
         res.status(201).json(offer);
     } catch (error) {
-        res.status(500).json({ message: 'Error adding offer', error: error.message });
+        res.status(500).json({ message: 'Error adding image', error: error.message });
     }
 });
 
 //delete an image from the gallery
-
 
 //view image gallery by user
 

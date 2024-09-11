@@ -14,9 +14,6 @@ router.get('/payments', (req,res)=>{
 //TODO view my payments
 
 
-
-
-
 //TODO update payment status by admin
 router.put('/payments/:id', (req, res)=>{
     Payment.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){

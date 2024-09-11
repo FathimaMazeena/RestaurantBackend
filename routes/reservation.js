@@ -11,8 +11,7 @@ router.get('/reservations', (req,res)=>{
 
 });
 
-//TODO view resrvations by customer
-
+//view resrvations by customer
 
 //Make a reservation by customer
 router.post('/reservations', async (req, res) => {
@@ -25,9 +24,7 @@ router.post('/reservations', async (req, res) => {
     }
 });
 
-
-
-//TODO update a reservation by the customer
+//update a reservation by the customer
 router.put('/reservations/:id', (req, res)=>{
     Reservation.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
         Reservation.findOne({_id:req.params.id}).then(function(reservation){

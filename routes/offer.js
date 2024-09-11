@@ -10,10 +10,6 @@ router.get('/offers', (req,res)=>{
     });
 
 });
-
-
-
-
 //add new offer by admin
 router.post('/offers', async (req, res) => {
     try {
@@ -23,8 +19,6 @@ router.post('/offers', async (req, res) => {
         res.status(500).json({ message: 'Error adding offer', error: error.message });
     }
 });
-
-
 //TODO update offer (extend, change discount inactivate ) by admin
 router.put('/offers/:id', (req, res)=>{
     Offer.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
@@ -34,7 +28,6 @@ router.put('/offers/:id', (req, res)=>{
         
     });
 });
-
 //delete offer by admin
 router.delete('/offers/:id', (req, res)=>{
     Offer.findByIdAndDelete({_id:req.params.id}).then(function(offer){

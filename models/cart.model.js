@@ -24,10 +24,23 @@ const CartSchema = new Schema(
             required: true
         },
 
-        cartItems: [CartItemSchema]
+        cartItems: [CartItemSchema],
+
+        totalPrice: {
+            type: Number,
+            required: false,
+            default: 0
+        }
     },
     { timestamps: true }
 );
+
+// cartSchema.methods.calculateTotalPrice = function() {
+//     this.totalPrice = this.items.reduce((acc, item) => {
+//         return acc + (item.product.price * item.quantity); // Assuming product has a price field
+//     }, 0);
+//     return this.totalPrice;
+// };
 
 const Cart = mongoose.model('Cart', CartSchema);
 

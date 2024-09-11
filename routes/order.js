@@ -11,10 +11,9 @@ router.get('/orders', (req,res)=>{
 
 });
 
-//TODO view my orders
+//view my orders
 
-
-//TODO place an order by the customer
+//place an order by the customer
 router.post('/orders', async (req, res) => {
     try {
         const order = await Order.create(req.body);
@@ -25,7 +24,7 @@ router.post('/orders', async (req, res) => {
 });
 
 
-//TODO update(cancel) order by customer
+//update(cancel) order by customer
 router.put('/orders/:id', (req, res)=>{
     Order.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
         Order.findOne({_id:req.params.id}).then(function(order){
@@ -35,7 +34,7 @@ router.put('/orders/:id', (req, res)=>{
     });
 });
 
-//TODO update order status by admin
+//update order status by admin
 router.put('/orders/:id', (req, res)=>{
     Order.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
         Order.findOne({_id:req.params.id}).then(function(order){

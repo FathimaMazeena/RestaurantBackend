@@ -23,10 +23,6 @@ router.get('/menus/todays-menu', async (req, res) => {
     }
 });
 
-
-
-
-
 //Add new menu by the admin
 router.post('/menus', async (req, res) => {
     try {
@@ -37,14 +33,12 @@ router.post('/menus', async (req, res) => {
     }
 });
 
-
 //update menu by admin (active status and other information)
 router.put('/menus/:id', (req, res)=>{
     Menu.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
         Menu.findOne({_id:req.params.id}).then(function(menu){
             res.send(menu);
-        });
-        
+      });
     });
 });
 

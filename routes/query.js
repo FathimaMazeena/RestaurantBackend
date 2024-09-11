@@ -10,10 +10,9 @@ router.get('/queries', (req,res)=>{
 
 });
 
-//TODO View queries by customer
+//View queries by customer
 
-
-//TODO Post query message by user
+//Post query message by user
 router.post('/queries', async (req, res) => {
     
     try {
@@ -24,7 +23,7 @@ router.post('/queries', async (req, res) => {
     }
 });
 
-//TODO post query message by admin and staff
+//post query message by admin and staff
 router.post('/queries', async (req, res) => {
     
     try {
@@ -35,17 +34,17 @@ router.post('/queries', async (req, res) => {
     }
 });
 
-//TODOupdate query message by user
-router.put('/queries/:id', (req, res)=>{
-    Query.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
-        Query.findOne({_id:req.params.id}).then(function(query){
-            res.send(query);
-        });
+// //update query message by user
+// router.put('/queries/:id', (req, res)=>{
+//     Query.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
+//         Query.findOne({_id:req.params.id}).then(function(query){
+//             res.send(query);
+//         });
         
-    });
-});
+//     });
+// });
 
-//TODOupdate query message by admin and staff
+//update query message by admin and staff
 router.put('/queries/:id', (req, res)=>{
     Query.findByIdAndUpdate({_id:req.params.id},req.body).then(function(){
         Query.findOne({_id:req.params.id}).then(function(query){

@@ -8,9 +8,22 @@ const ReservationSchema = new Schema(
 
             type: Schema.Types.ObjectId,
             ref: 'User',
+            required: false
+
+        },
+
+        email:{
+            type: String,
             required: true
 
         },
+
+        name:{
+            type: String,
+            required: true
+
+        },
+
 
         reservationDate:{
             type: Date,

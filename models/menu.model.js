@@ -8,7 +8,7 @@ const MenuSchema = new Schema(
             required: true
         },
 
-        name: {
+        menuName: {
             type: String,
             required: true
         },
@@ -21,7 +21,7 @@ const MenuSchema = new Schema(
         menuItems: {
             type: [Schema.Types.ObjectId],
             ref: 'dish',  
-            required: true
+            required: false
         },
 
         price: {
@@ -32,7 +32,7 @@ const MenuSchema = new Schema(
 
         portion: {
             type: String,
-            required: true,
+            required: false,
             enum: ['small', 'medium', 'large']  
         },
 
